@@ -114,6 +114,11 @@ declare namespace RageMP {
 	}
 
 	interface Player extends Entity {
+		/**
+		* only on TerraTex	
+		*/
+		customData: any;
+		
 		armour: number;
 		eyeColor: number;
 		heading: number;
@@ -125,6 +130,7 @@ declare namespace RageMP {
 		readonly aimTarget: Player;
 		readonly allWeapons: number[];
 		readonly ip: string;
+		readonly serial: string;
 		readonly isAiming: boolean;
 		readonly isClimbing: boolean;
 		readonly isEnteringVehicle: boolean;
