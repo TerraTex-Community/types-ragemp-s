@@ -382,10 +382,10 @@ declare namespace RageMP {
 		broadcast(text: string): void;
 		broadcastInRange(position: Vector3, range: number, text: string): void;
 		broadcastInRange(position: Vector3, range: number, dimension: number, text: string): void;
-		call(eventName: string, ...args: any[]): void;
-		call(players: Player[], eventName: string, ...args: any[]): void;
+		call(eventName: string, args: any[]): void;
+		call(players: Player[], eventName: string, args: any[]): void;
 		callInDimension(eventName: string, ...args: any[]): void;
-		callInRange(eventName: string, ...args: any[]): void;
+		callInRange(position: Vector3, range: number,eventName: string, args: any[]): void;
 	}
 
 	interface TextLabelPool extends EntityPool<TextLabel> {
