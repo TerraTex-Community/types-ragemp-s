@@ -1,5 +1,5 @@
 declare namespace RageMP.Hashes {
-	enum Weapon {
+	const enum Weapon {
 		ADVANCEDRIFLE = 0xAF113F99,
 		APPISTOL = 0x22D8FE39,
 		ASSAULTRIFLE = 0xBFEFFF6D,
