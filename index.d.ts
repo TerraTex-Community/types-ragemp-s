@@ -30,6 +30,7 @@ declare namespace RageMP {
 		players: PlayerPool;
 		objects: ObjectPool;
 		vehicles: VehiclePool;
+		config: any;
 		world: World;
 
 		Event: { 
