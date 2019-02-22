@@ -207,6 +207,7 @@ declare namespace RageMP {
 		setWeaponAmmo(weapon: RageMP.Hashes.Weapon | HashOrString, ammo: number): void;
 		spawn(position: Vector3): void;
 		updateHeadBlend(shapeMix: number, skinMix: number, thirdMix: number): void;
+        playScenario(scenario: string): void;
 	}
 
 	interface TextLabel extends Entity {
@@ -351,6 +352,7 @@ declare namespace RageMP {
 		add(eventName: RageMP.Enums.Event | string, callback: (...args: any[]) => void): void;
 		add(events: ({ [name: string]: (...args: any[]) => void; })): void;
 		addCommand(commandName: string, callback: (player: Player, fullText: string, ...args: string[]) => void): void;
+        addCommand(commands: { [commandName: string]: (player: Player, fullText: string, ...args: string[]) => void; }): void;
 		call(eventName: string, ...args: any[]): void;
 		getAllOf(eventName: string): Event[];
 		remove(eventName: string, handler?: (...args: any[]) => void): void;
