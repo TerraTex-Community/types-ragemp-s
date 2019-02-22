@@ -80,6 +80,7 @@ declare namespace RageMP {
 	}
 
 	interface Entity {
+		[x: string]: any;
 		alpha: number;
 		data: any;
 		dimension: number;
