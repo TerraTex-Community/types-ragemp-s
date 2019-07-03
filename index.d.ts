@@ -19,21 +19,21 @@ declare namespace RageMP {
 	// Main MP type
 	// -------------------------------------------------------------------------
 
-	type MpObject = {
-		blips: BlipPool;
-		checkpoints: CheckpointPool;
-		colshapes: ColshapePool;
-		events: EventPool;
-		labels: TextLabelPool;
-		markers: MarkerPool;
-		pickups: PickupPool;
-		players: PlayerPool;
-		objects: ObjectPool;
-		vehicles: VehiclePool;
-		config: any;
-		world: World;
+type MpObject = {
+    blips: BlipPool;
+    checkpoints: CheckpointPool;
+    colshapes: ColshapePool;
+    events: EventPool;
+    labels: TextLabelPool;
+    markers: MarkerPool;
+    pickups: PickupPool;
+    players: PlayerPool;
+    objects: ObjectPool;
+    vehicles: VehiclePool;
+	config: Config,
+    world: World;
 
-		Event: { 
+		Event: {
 			new(eventName: RageMP.Enums.Event | string, callback: (...args: any[]) => void): Event
 		};
 		Vector3: Vector3;
@@ -88,7 +88,7 @@ declare namespace RageMP {
 		position: Vector3;
 		readonly id: number;
 		readonly type: RageMP.Enums.EntityType;
-		
+
 		getVariable(name: string): any | undefined;
 		destroy(): void;
 		dist(position: Vector3): number;
@@ -117,10 +117,10 @@ declare namespace RageMP {
 
 	interface Player extends Entity {
 		/**
-		* only on TerraTex	
+		* only on TerraTex
 		*/
 		customData: any;
-		
+
 		armour: number;
 		eyeColor: number;
 		heading: number;
@@ -279,11 +279,11 @@ declare namespace RageMP {
 
 	interface World {
 		weather: RageMP.Enums.Weather | string;
-		time: { 
+		time: {
 			hour: number,
 			minute: number,
 			second: number
-			
+
 			set(hour: number, minute: number, second: number): void;
 		};
 		trafficLights: {
@@ -300,9 +300,38 @@ declare namespace RageMP {
 		destroy(): void;
 	}
 
-	// -------------------------------------------------------------------------
-	// Pool MP types
-	// -------------------------------------------------------------------------
+    interface Config {
+        [index: string]: any,
+        announce: boolean,
+        bind: string,
+        gamemode: string,
+        encryption: boolean,
+        maxplayers: number,
+        name: string,
+        'stream-distance': number,
+        port: number,
+        'disallow-multiple-connections-per-ip': boolean,
+        'limit-time-of-connections-per-ip': number,
+        url: string,
+        language: string,
+        'sync-rate': number,
+        'resource-scan-thread-limit': number,
+        'max-ping': number,
+        'min-fps': number,
+        'max-packet-loss': number,
+        'allow-cef-debugging': boolean,
+        'enable-nodejs': boolean,
+        'csharp': boolean,
+        'enable-http-security': boolean,
+        'voice-chat': boolean,
+        'allow-voice-chat-input': number,
+        'voice-chat-sample-rate': number,
+        'fastdl-host': string,
+    }
+
+// -------------------------------------------------------------------------
+// Pool MP types
+// -------------------------------------------------------------------------
 
 	interface BlipPool extends EntityPool<Blip> {
 		"new"(sprite: number, position: Vector3, options?: {
